@@ -50,5 +50,17 @@ def h1(s):
 
 def h3(s):
     # implement this function
+    goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
     board, _, _ = s
-    return 0
+    res = 0
+    for idx in range(1, 9):
+        if goal[idx] != board[idx]:
+            destination_row = board[idx]//3+1
+            destination_col = board[idx]%3
+            initial_position_row = idx//3+1
+            initial_position_col = idx%3
+            row_diff = abs(destination_row-initial_position_row)
+            col_diff = abs(destination_col-initial_position_col)
+            res = res + row_diff + col_diff
+            
+    return res
