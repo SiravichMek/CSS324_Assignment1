@@ -53,14 +53,15 @@ def h3(s):
     goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
     board, _, _ = s
     res = 0
-    for idx in range(1, 9):
-        if goal[idx] != board[idx]:
-            destination_row = board[idx]//3+1
-            destination_col = board[idx]%3
-            initial_position_row = idx//3+1
-            initial_position_col = idx%3
-            row_diff = abs(destination_row-initial_position_row)
-            col_diff = abs(destination_col-initial_position_col)
-            res = res + row_diff + col_diff
-            
+    for idx in range(9):
+        if board[idx] != 0:
+            if goal[idx] != board[idx]:
+                destination_row = board[idx]//3
+                destination_col = board[idx]%3
+                initial_position_row = idx//3
+                initial_position_col = idx%3
+                if destination_row != initial_position_row:
+                    res += 1
+                if destination_col != initial_position_col:
+                    res += 1  
     return res
